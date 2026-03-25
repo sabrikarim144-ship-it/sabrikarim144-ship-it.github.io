@@ -13,11 +13,9 @@
     --accent-light: #e8d9b8;
     --grey: #6b6b6b;
     --grey-light: #e2dfd9;
-    --section-gap: 4rem;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -29,7 +27,7 @@
     overflow-x: hidden;
   }
 
-  /* ── SIDEBAR ── */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
     top: 0; left: 0;
@@ -50,18 +48,6 @@
     border: 2px solid var(--accent);
     object-fit: cover;
     margin-bottom: 1.6rem;
-    filter: grayscale(20%);
-  }
-
-  .sidebar-photo-placeholder {
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    background: #222;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem;
-    color: var(--accent);
-    margin-bottom: 1.6rem;
   }
 
   .sidebar-name {
@@ -70,7 +56,6 @@
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: .3rem;
-    letter-spacing: -.01em;
   }
 
   .sidebar-title {
@@ -114,16 +99,19 @@
     margin-bottom: .6rem;
   }
 
-  .contact-item .icon {
+  .contact-item svg {
     width: 16px; height: 16px;
     flex-shrink: 0;
     margin-top: 2px;
     opacity: .6;
   }
 
-  .skill-bar-wrap {
-    margin-bottom: 1rem;
+  .contact-email {
+    color: #ccc;
+    text-decoration: none;
   }
+
+  .skill-bar-wrap { margin-bottom: 1rem; }
 
   .skill-label {
     font-size: .78rem;
@@ -144,9 +132,8 @@
     height: 100%;
     background: var(--accent);
     border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1s cubic-bezier(.16,1,.3,1);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(.16,1,.3,1);
   }
 
   .soft-skill-tag {
@@ -180,16 +167,15 @@
     cursor: pointer;
   }
 
-  .nav-link:hover { color: var(--accent); }
-  .nav-link.active { color: var(--accent); }
+  .nav-link:hover, .nav-link.active { color: var(--accent); }
 
-  /* ── MAIN ── */
+  /* MAIN */
   .main {
     margin-left: 300px;
     min-height: 100vh;
   }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     padding: 5rem 5rem 4rem;
     border-bottom: 1px solid var(--grey-light);
@@ -238,15 +224,10 @@
     max-width: 560px;
     position: relative;
     z-index: 1;
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
-  .hero-intro strong {
-    color: var(--black);
-    font-weight: 500;
-  }
-
-  /* ── SECTION ── */
+  /* SECTIONS */
   .section {
     padding: 4rem 5rem;
     border-bottom: 1px solid var(--grey-light);
@@ -278,7 +259,6 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem;
     font-weight: 400;
-    letter-spacing: -.02em;
   }
 
   .section-line {
@@ -287,7 +267,7 @@
     background: var(--grey-light);
   }
 
-  /* ── TIMELINE ── */
+  /* TIMELINE */
   .timeline {
     position: relative;
     padding-left: 1.5rem;
@@ -346,7 +326,7 @@
   .timeline-desc {
     font-size: .88rem;
     color: #555;
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
   .timeline-tags {
@@ -364,7 +344,6 @@
     color: var(--grey);
     padding: .2rem .6rem;
     border-radius: 3px;
-    letter-spacing: .04em;
   }
 
   .tag.highlight {
@@ -373,7 +352,7 @@
     background: #fdf8f0;
   }
 
-  /* ── TRAINING GRID ── */
+  /* TRAINING GRID */
   .training-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -385,7 +364,6 @@
     padding: 1.4rem 1.6rem;
     border-radius: 4px;
     transition: border-color .3s, box-shadow .3s;
-    cursor: default;
   }
 
   .training-card:hover {
@@ -417,7 +395,7 @@
     color: var(--grey);
   }
 
-  /* ── SKILLS SECTION ── */
+  /* SKILLS GRID */
   .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -457,7 +435,7 @@
     flex-shrink: 0;
   }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   .footer {
     padding: 3rem 5rem;
     text-align: center;
@@ -466,11 +444,10 @@
   .footer-cta {
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
-    color: var(--black);
     margin-bottom: .5rem;
   }
 
-  .footer-email {
+  .footer-email-link {
     font-family: 'DM Mono', monospace;
     font-size: .85rem;
     color: var(--accent);
@@ -478,9 +455,9 @@
     letter-spacing: .05em;
   }
 
-  .footer-email:hover { text-decoration: underline; }
+  .footer-email-link:hover { text-decoration: underline; }
 
-  /* ── SCROLL INDICATOR ── */
+  /* SCROLL LINE */
   .scroll-line {
     position: fixed;
     top: 0; left: 0;
@@ -491,22 +468,19 @@
     transition: width .1s linear;
   }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     .sidebar {
       position: static;
       width: 100%;
       height: auto;
-      flex-direction: row;
-      flex-wrap: wrap;
       padding: 2rem;
-      gap: 1.5rem;
     }
     .main { margin-left: 0; }
     .hero, .section { padding: 3rem 2rem; }
     .training-grid, .skills-grid { grid-template-columns: 1fr; }
-    .hero::before { font-size: 8rem; }
-    .nav-links { flex-direction: row; flex-wrap: wrap; border-top: none; padding-top: 0; margin-top: 0; }
+    .hero::before { font-size: 7rem; }
+    .footer { padding: 3rem 2rem; }
   }
 </style>
 </head>
@@ -526,49 +500,48 @@
   <div class="sidebar-section">
     <div class="sidebar-section-title">Contact</div>
     <div class="contact-item">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.98 2.32 2 2 0 012.96.12h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.98 2.32 2 2 0 012.96.12h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
       06 29 18 40 81
     </div>
     <div class="contact-item">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3043515242591e5b5142595d01040470575d51595c1e535f5d">[email&#160;protected]</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span id="contact-email"></span>
     </div>
     <div class="contact-item">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Bourguébus 14540 — Normandie
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      BOURGUÉBUS 14540
     </div>
     <div class="contact-item">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      Permis B, A · T3P
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Permis B, A — Certification d'État T3P
     </div>
   </div>
 
   <div class="sidebar-section">
     <div class="sidebar-section-title">Compétences techniques</div>
-
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>Apple Certification (HW+SW)</span><span>4.5/5</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="90%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
     </div>
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>Tests fonctionnels / exploratoires</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="75%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
     </div>
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>Jira / Katalon Studio</span><span>en cours</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="45%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="45"></div></div>
     </div>
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>Selenium / Cucumber</span><span>en cours</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="35%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="35"></div></div>
     </div>
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>SQL / Python</span><span>en cours</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="30%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="30"></div></div>
     </div>
     <div class="skill-bar-wrap">
       <div class="skill-label"><span>HTML / CSS / JavaScript</span><span>en cours</span></div>
-      <div class="skill-track"><div class="skill-fill" data-width="30%"></div></div>
+      <div class="skill-track"><div class="skill-fill" data-w="30"></div></div>
     </div>
   </div>
 
@@ -584,31 +557,31 @@
   </div>
 
   <nav class="nav-links">
-    <a class="nav-link active" onclick="scrollTo('hero')">Profil</a>
-    <a class="nav-link" onclick="scrollTo('experience')">Expériences</a>
-    <a class="nav-link" onclick="scrollTo('formation')">Formation</a>
-    <a class="nav-link" onclick="scrollTo('skills')">Skills</a>
+    <a class="nav-link active" onclick="goTo('hero')">Profil</a>
+    <a class="nav-link" onclick="goTo('experience')">Expériences</a>
+    <a class="nav-link" onclick="goTo('formation')">Formation</a>
+    <a class="nav-link" onclick="goTo('skills')">Skills</a>
   </nav>
 
 </aside>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main class="main">
 
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-label">Profil · Recherche de stage QA</div>
     <p class="hero-intro">
-      Fort d'une expertise en résolution de problèmes matériels et logiciels chez Apple, je me reconvertis aujourd'hui dans le test logiciel/QA.<br>
+      Fort d'une expertise en résolution de problèmes matériels et logiciels chez Apple, je me reconvertis aujourd'hui dans le test logiciel/QA.<br><br>
       Alliant rigueur analytique, leadership et culture du détail, je mets désormais mes compétences au service de la qualité logicielle et l'optimisation de l'expérience utilisateur.
     </p>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EXPÉRIENCES -->
   <section class="section" id="experience">
     <div class="section-header">
       <span class="section-number">01</span>
-      <h2 class="section-title">Expériences</h2>
+      <h2 class="section-title">Expériences professionnelles</h2>
       <div class="section-line"></div>
     </div>
 
@@ -625,7 +598,7 @@
         <div class="timeline-tags">
           <span class="tag highlight">Tests fonctionnels</span>
           <span class="tag highlight">Tests exploratoires</span>
-          <span class="tag highlight">Rédaction rapports</span>
+          <span class="tag highlight">Rédaction rapport</span>
         </div>
       </div>
 
@@ -730,33 +703,33 @@
       <div class="training-card featured">
         <div class="training-date">05/2026 · En cours</div>
         <div class="training-name">Certification ISTQB</div>
-        <div class="training-detail">Foundation Level — Test logiciel</div>
+        <div class="training-detail">En cours</div>
       </div>
-
       <div class="training-card featured">
         <div class="training-date">02/2026 – 08/2026</div>
-        <div class="training-name">Testeur Logiciel / QA</div>
-        <div class="training-detail">ENI École Informatique · Titre RNCP Niveau V (Bac+2)</div>
+        <div class="training-name">Formation Testeur Logiciel / QA</div>
+        <div class="training-detail">ENI École Informatique · Titre RNCP Niveau V — Bac+2</div>
       </div>
-
       <div class="training-card">
         <div class="training-date">07/2025 – 09/2025</div>
         <div class="training-name">Certification d'État T3P</div>
         <div class="training-detail">Conducteur de Transport Public Particulier de Personnes</div>
       </div>
-
       <div class="training-card">
         <div class="training-date">01/2010 – 01/2011</div>
         <div class="training-name">Anglais — Niveau 3/5</div>
         <div class="training-detail">Centre Américain de Langues, Fès (Maroc)</div>
       </div>
-
       <div class="training-card">
         <div class="training-date">2008 – 2009</div>
         <div class="training-name">Web-master / Graphisme</div>
         <div class="training-detail">Communication visuelle — Institut MULTIHEXA</div>
       </div>
-
+      <div class="training-card">
+        <div class="training-date">2007 – 2008</div>
+        <div class="training-name">Informatique Tronc commun</div>
+        <div class="training-detail">Institut MULTIHEXA, Oujda (Maroc)</div>
+      </div>
       <div class="training-card">
         <div class="training-date">2005 – 2006</div>
         <div class="training-name">Baccalauréat Technique</div>
@@ -769,13 +742,13 @@
   <section class="section" id="skills">
     <div class="section-header">
       <span class="section-number">03</span>
-      <h2 class="section-title">Outils & Technologies</h2>
+      <h2 class="section-title">Outils &amp; Technologies</h2>
       <div class="section-line"></div>
     </div>
 
     <div class="skills-grid">
       <div>
-        <div class="skill-group-title">QA & Test (en formation)</div>
+        <div class="skill-group-title">QA &amp; Test (en formation)</div>
         <span class="skill-pill active"><span class="dot"></span>Selenium</span>
         <span class="skill-pill active"><span class="dot"></span>Cucumber</span>
         <span class="skill-pill active"><span class="dot"></span>Katalon Studio</span>
@@ -784,7 +757,6 @@
         <span class="skill-pill"><span class="dot"></span>Tests exploratoires</span>
         <span class="skill-pill"><span class="dot"></span>Stress tests</span>
       </div>
-
       <div>
         <div class="skill-group-title">Développement (en formation)</div>
         <span class="skill-pill active"><span class="dot"></span>Python</span>
@@ -793,19 +765,19 @@
         <span class="skill-pill active"><span class="dot"></span>CSS</span>
         <span class="skill-pill active"><span class="dot"></span>JavaScript</span>
       </div>
-
       <div>
         <div class="skill-group-title">Expertise Apple</div>
-        <span class="skill-pill"><span class="dot"></span>MacOS</span>
-        <span class="skill-pill"><span class="dot"></span>iOS</span>
-        <span class="skill-pill"><span class="dot"></span>iPadOS</span>
-        <span class="skill-pill"><span class="dot"></span>watchOS</span>
-        <span class="skill-pill"><span class="dot"></span>Hardware diag.</span>
-        <span class="skill-pill"><span class="dot"></span>Software repair</span>
+        <span class="skill-pill"><span class="dot"></span>Mac</span>
+        <span class="skill-pill"><span class="dot"></span>iPhone</span>
+        <span class="skill-pill"><span class="dot"></span>iPad</span>
+        <span class="skill-pill"><span class="dot"></span>Watch</span>
+        <span class="skill-pill"><span class="dot"></span>AirPods</span>
+        <span class="skill-pill"><span class="dot"></span>HomePod</span>
+        <span class="skill-pill"><span class="dot"></span>Apple TV</span>
+        <span class="skill-pill"><span class="dot"></span>Hardware + Software</span>
       </div>
-
       <div>
-        <div class="skill-group-title">Outils créatifs & divers</div>
+        <div class="skill-group-title">Outils créatifs &amp; divers</div>
         <span class="skill-pill"><span class="dot"></span>Photoshop</span>
         <span class="skill-pill"><span class="dot"></span>Lightroom</span>
         <span class="skill-pill"><span class="dot"></span>Windows (3/5)</span>
@@ -816,51 +788,51 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-cta">Disponible pour un stage en test logiciel</div>
-    <span class="footer-email" id="email-display" style="cursor:pointer;" onclick="this.innerHTML='sabri.karim144@gmail.com'; this.onclick=null;">Cliquez pour afficher l'email</span>
+    <span id="footer-email"></span>
   </footer>
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll progress line
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const total = document.body.scrollHeight - window.innerHeight;
-    document.getElementById('scrollLine').style.width = (scrolled / total * 100) + '%';
+<script>
+  // Email — construit dynamiquement pour éviter la protection automatique
+  (function() {
+    var u = 'sabri.karim144';
+    var d = 'gmail' + '.' + 'com';
+    var e = u + '@' + d;
+    var ce = document.getElementById('contact-email');
+    var fe = document.getElementById('footer-email');
+    if (ce) ce.innerHTML = '<a class="contact-email" href="mai' + 'lto:' + e + '">' + e + '</a>';
+    if (fe) fe.innerHTML = '<a class="footer-email-link" href="mai' + 'lto:' + e + '">' + e + '</a>';
+  })();
 
-    // Active nav link
-    const sections = ['hero','experience','formation','skills'];
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top;
-      const link = document.querySelector(`[onclick="scrollTo('${id}')"]`);
-      if (!link) return;
-      link.classList.toggle('active', top <= 100 && top > -el.offsetHeight + 100);
-    });
+  // Barre de scroll
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY;
+    var total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('scrollLine').style.width = (scrolled / total * 100) + '%';
   });
 
-  // Scroll nav
-  window.scrollTo = (function(orig) {
-    return function(id) {
-      if (typeof id === 'string') {
-        const el = document.getElementById(id);
-        if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
-      }
-      orig.apply(window, arguments);
-    };
-  })(window.scrollTo);
+  // Navigation
+  function goTo(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }
 
-  // Intersection observer for section fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: .08 });
+  // Apparition des sections
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+  document.querySelectorAll('.section').forEach(function(s) { observer.observe(s); });
 
-  // Skill bars animation
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-fill').forEach(fill => {
-          fill.style.transform = `scaleX(${parseFloat(fill.dataset.wid
+  // Barres de compétences
+  setTimeout(function() {
+    document.querySelectorAll('.skill-fill').forEach(function(fill) {
+      fill.style.width = fill.getAttribute('data-w') + '%';
+    });
+  }, 500);
+</script>
+</body>
+</html>
